@@ -37,6 +37,7 @@ public:
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label;
+    QSpacerItem *horizontalSpacer_5;
     QLineEdit *lineEdit_user;
     QHBoxLayout *horizontalLayout;
     QLabel *label_2;
@@ -90,6 +91,10 @@ public:
         label->setObjectName(QStringLiteral("label"));
 
         horizontalLayout_2->addWidget(label);
+
+        horizontalSpacer_5 = new QSpacerItem(30, 17, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_5);
 
         lineEdit_user = new QLineEdit(frame);
         lineEdit_user->setObjectName(QStringLiteral("lineEdit_user"));
@@ -170,8 +175,8 @@ public:
         LIBPROClass->setCentralWidget(centralWidget);
         frame->raise();
         label_3->raise();
-        pushButtonLogin->raise();
-        pushButtonLogin->raise();
+        pushButtonRegister->raise();
+        pushButtonForgotPass->raise();
 
         retranslateUi(LIBPROClass);
 
@@ -185,8 +190,8 @@ public:
         label_3->setWhatsThis(QApplication::translate("LIBPROClass", "<html><head/><body><p><span style=\" font-size:12pt; font-style:italic;\">Designed by </span><a href=\"https://www.qt.io/\"><span style=\" text-decoration: underline; color:#0000ff;\">Qt</span></a></p></body></html>", Q_NULLPTR));
 #endif // QT_NO_WHATSTHIS
         label_3->setText(QApplication::translate("LIBPROClass", "Designed by Qt", Q_NULLPTR));
-        label->setText(QApplication::translate("LIBPROClass", "User        ", Q_NULLPTR));
-        label_2->setText(QApplication::translate("LIBPROClass", "Password", Q_NULLPTR));
+        label->setText(QApplication::translate("LIBPROClass", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600; color:#ececec;\">User             </span></p></body></html>", Q_NULLPTR));
+        label_2->setText(QApplication::translate("LIBPROClass", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600; color:#dfdfdf;\">Password</span></p></body></html>", Q_NULLPTR));
         pushButtonLogin->setText(QString());
         pushButtonRegister->setText(QApplication::translate("LIBPROClass", "Register", Q_NULLPTR));
         pushButtonForgotPass->setText(QApplication::translate("LIBPROClass", "Forgot Password", Q_NULLPTR));

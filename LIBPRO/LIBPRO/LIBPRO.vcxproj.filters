@@ -96,9 +96,6 @@
     <CustomBuild Include="LIBPRO.qrc">
       <Filter>Resource Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="RegisterForm.ui">
-      <Filter>Form Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="registerform.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
@@ -114,12 +111,12 @@
     <CustomBuild Include="usermenu.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="RegisterForm.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_LIBPRO.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_RegisterForm.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="Features.h">
@@ -131,5 +128,13 @@
     <ClInclude Include="GeneratedFiles\ui_usermenu.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_RegisterForm.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="LIBPRO.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

@@ -12,7 +12,7 @@ void ForgotPass::on_resetButton_clicked() {
 	QString phone = ui.linePhone->text();
 	QString pass = "admin";
 	if (resetPassword(user, phone, pass)) {
-		QMessageBox::information(this, "Reset Password Success", "Your password have been changed successfully");
+		QMessageBox::information(this, "Reset Password Successfully", "Your new password is ""admin"". Please change it in profile");
 	}
 	else QMessageBox::information(this, "Reset Password Failed", "Failed");
 }

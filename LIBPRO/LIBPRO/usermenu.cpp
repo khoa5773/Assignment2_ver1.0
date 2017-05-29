@@ -1,17 +1,25 @@
 #include "usermenu.h"
 #include "Features.h"
+#include "LIBPRO.h"
 #include <qmessagebox.h>
 #include <qstring.h>
 #include <qinputdialog.h>
 
-UserMenu::UserMenu(QWidget *parent)
+UserMenu::UserMenu(QString name, QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
 
+	user = new QString(name);
+
 	ui.searchLine->setPlaceholderText("Search for Books");
 	ui.stackedWidget->setCurrentIndex(0);
-
+	ui.stackedWidget->setStyleSheet(QLatin1String("#stackedWidget {	\n"
+			"	border-image: url(:/LIBPRO/usermenu.png);\n"
+			"}"));
+	ui.searchButton->setStyleSheet(QLatin1String("#searchButton {	\n"
+		"	border-image: url(:/LIBPRO/search_icon.png);\n"
+		"}"));
 }
 
 UserMenu::~UserMenu()
@@ -24,10 +32,16 @@ void UserMenu::on_findBookButton_clicked() {
 }
 
 void UserMenu::on_historyButton_clicked() {
+	ui.lineUser_info->setText(getUser_now());
+	ui.linePass_info->setText(getPass_now());
+	ui.linePhone_info->setText(getPhone_now());
 	ui.stackedWidget->setCurrentIndex(2);
 }
 
 void UserMenu::on_profileButton_clicked() {
+	ui.lineUser_info->setText(getUser_now());
+	ui.linePass_info->setText(getPass_now());
+	ui.linePhone_info->setText(getPhone_now());
 	ui.stackedWidget->setCurrentIndex(2);
 }
 
@@ -56,10 +70,8 @@ void UserMenu::on_saveButton_clicked() {
 			return;
 		}
 		QString passConfirm = QInputDialog::getText(this, "Confirm Password", "Please confirm your password: ", QLineEdit::Password);
-		bool equal = (ui.linePass_info->text() == passConfirm); // compare user changes password with passConfirm.toString()
-		if (equal) {
-			//set new password in here or go down :v it's up to you
-
+		if (compareString(ui.linePass_info->text(),passConfirm)) {
+			resetPassword(ui.lineUser_info->text(), ui.linePass_info->text());
 			ui.linePass_info->setModified(false);
 		}
 		else {
@@ -72,16 +84,58 @@ void UserMenu::on_saveButton_clicked() {
 			QMessageBox::warning(this, "Invalid", "Phone number is not valid");
 			return;
 		}
+		else {
+			changePhone(ui.lineUser_info->text(), ui.linePhone_info->text());
+			QMessageBox::warning(this, "Success", "Phonenumber has been changed");
+		}
 	}
 	if (haveChangedPass || haveChangedPhone) {
 		if (QMessageBox::Yes == QMessageBox::question(this, "Save changes", "Do you want to save your changes?")) {
-			//set new user information in here
-
-			// return to previous state
 			ui.saveButton->setEnabled(false);
 			ui.linePass_info->setReadOnly(true);
 			ui.linePhone_info->setReadOnly(true);
 			ui.note_info->setReadOnly(true);
 		}
 	}
+}
+
+//fucntion on search book page
+
+void UserMenu::on_searchButton_clicked() {
+	ui.listWidget_2->clear();
+	QString keyw = '%' + ui.searchLine->text() + '%';
+	CONNECTDB
+		con->setSchema(DBBOOK);
+	pstmt = con->prepareStatement("call book_admin.searchBook(?)");
+	pstmt->setString(1, keyw.toLocal8Bit().constData());
+	res = pstmt->executeQuery();
+	while (res->next()) {
+		QString findedBook = res->getString("book_name").c_str();
+		QListWidgetItem* item = new QListWidgetItem();
+		item->setText(findedBook);
+		ui.listWidget_2->addItem(item);
+	}
+	delete pstmt;
+	delete res;
+	DISCONNECTDB
+}
+
+void UserMenu::on_listWidget_2_itemClicked() {
+	ui.addButton->setEnabled(true);
+	ui.listWidget_2->setCurrentItem(ui.listWidget_2->currentItem());
+}
+
+void UserMenu::on_addButton_clicked() {
+	QListWidgetItem* itemAdd = new QListWidgetItem();
+	itemAdd = ui.listWidget_2->currentItem()->clone();
+	ui.listWidget_3->addItem(itemAdd);
+}
+
+void UserMenu::on_listWidget_3_itemClicked() {
+	ui.removeButton->setEnabled(true);
+}
+
+void UserMenu::on_removeButton_clicked() {
+	ui.listWidget_3->currentItem()->~QListWidgetItem();
+	ui.removeButton->setEnabled(false);
 }

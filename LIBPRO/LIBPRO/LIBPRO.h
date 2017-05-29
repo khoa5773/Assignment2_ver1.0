@@ -6,6 +6,7 @@
 #include "forgotpass.h"
 #include "usermenu.h"
 
+
 class LIBPRO : public QMainWindow
 {
 	Q_OBJECT

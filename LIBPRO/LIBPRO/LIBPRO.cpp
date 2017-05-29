@@ -17,9 +17,11 @@ void LIBPRO::openBox() {
 	QString username = ui.lineEdit_user->text();
 	QString password = ui.lineEdit_pass->text();
 	if (checkLogin(username,password)) { // condition check when data in the database is correct
+		writeDB(username, password, getInfo(username));
 		QMessageBox::information(this, "Sign In", "Login Success!");
-		usermenu = new UserMenu(this);
+		usermenu = new UserMenu(username, this);
 		usermenu->show();
+		ui.centralWidget->hide();
 	}
 	else {
 		QMessageBox::warning(this, "Error", "Login Error\nWrong username or password");

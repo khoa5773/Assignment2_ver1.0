@@ -13,7 +13,6 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
@@ -55,26 +54,23 @@ public:
     QPushButton *searchButton;
     QPushButton *returnButton;
     QListWidget *listWidget_2;
-    QWidget *layoutWidget2;
-    QHBoxLayout *horizontalLayout_2;
-    QVBoxLayout *verticalLayout_2;
-    QCheckBox *checkBox;
-    QCheckBox *checkBox_2;
-    QCheckBox *checkBox_3;
-    QCheckBox *checkBox_4;
-    QCheckBox *checkBox_5;
-    QVBoxLayout *verticalLayout_3;
-    QCheckBox *checkBox_6;
-    QCheckBox *checkBox_7;
-    QCheckBox *checkBox_8;
-    QCheckBox *checkBox_9;
-    QCheckBox *checkBox_10;
+    QPushButton *addButton;
+    QPushButton *removeButton;
+    QPushButton *pushButton;
+    QGroupBox *groupBox_2;
+    QLabel *label_7;
+    QLabel *label_8;
+    QLabel *label_9;
+    QLabel *borrowedNumber;
+    QLabel *remainNumber;
+    QLabel *totalNumber;
+    QListWidget *listWidget_3;
     QWidget *informationPage;
     QTableWidget *tableWidget;
     QPushButton *returnButton2;
     QGroupBox *groupBox;
     QPushButton *saveButton;
-    QWidget *layoutWidget3;
+    QWidget *layoutWidget2;
     QVBoxLayout *verticalLayout_4;
     QHBoxLayout *horizontalLayout_5;
     QLabel *label_3;
@@ -85,22 +81,23 @@ public:
     QHBoxLayout *horizontalLayout_7;
     QLabel *label_5;
     QLineEdit *linePhone_info;
-    QWidget *layoutWidget4;
+    QWidget *layoutWidget3;
     QHBoxLayout *horizontalLayout_8;
     QVBoxLayout *verticalLayout_5;
     QLabel *label_6;
     QSpacerItem *verticalSpacer_4;
     QTextEdit *note_info;
     QPushButton *changeButton;
-    QWidget *layoutWidget5;
+    QWidget *layoutWidget4;
     QHBoxLayout *horizontalLayout_3;
-    QWidget *layoutWidget6;
+    QWidget *layoutWidget5;
     QHBoxLayout *horizontalLayout_4;
 
     void setupUi(QWidget *UserMenu)
     {
         if (UserMenu->objectName().isEmpty())
             UserMenu->setObjectName(QStringLiteral("UserMenu"));
+        UserMenu->setWindowModality(Qt::ApplicationModal);
         UserMenu->resize(1060, 758);
         UserMenu->setMinimumSize(QSize(150, 40));
         QIcon icon;
@@ -111,6 +108,11 @@ public:
         stackedWidget->setObjectName(QStringLiteral("stackedWidget"));
         stackedWidget->setGeometry(QRect(0, 0, 1061, 771));
         stackedWidget->setAutoFillBackground(false);
+        stackedWidget->setStyleSheet(QLatin1String("#centralWidget{	\n"
+"	image: url(:/LIBPRO/usermenu.jpg);\n"
+"	background-image: url(:/LIBPRO/usermenu.jpg);\n"
+"	border-image: url(:/LIBPRO/usermenu.jpg);\n"
+"}"));
         menuPage = new QWidget();
         menuPage->setObjectName(QStringLiteral("menuPage"));
         layoutWidget = new QWidget(menuPage);
@@ -188,99 +190,67 @@ public:
         searchPage->setObjectName(QStringLiteral("searchPage"));
         searchLine = new QLineEdit(searchPage);
         searchLine->setObjectName(QStringLiteral("searchLine"));
-        searchLine->setGeometry(QRect(450, 180, 391, 21));
+        searchLine->setGeometry(QRect(60, 50, 721, 41));
+        QFont font;
+        font.setFamily(QStringLiteral("Lucida Calligraphy"));
+        font.setPointSize(20);
+        searchLine->setFont(font);
         searchLine->setFocusPolicy(Qt::StrongFocus);
         searchLine->setClearButtonEnabled(true);
         searchButton = new QPushButton(searchPage);
         searchButton->setObjectName(QStringLiteral("searchButton"));
-        searchButton->setGeometry(QRect(850, 170, 41, 31));
+        searchButton->setGeometry(QRect(800, 50, 51, 41));
         searchButton->setStyleSheet(QStringLiteral("border-image: url(:/LIBPRO/search_icon.png);"));
         returnButton = new QPushButton(searchPage);
         returnButton->setObjectName(QStringLiteral("returnButton"));
         returnButton->setGeometry(QRect(60, 670, 91, 31));
         listWidget_2 = new QListWidget(searchPage);
         listWidget_2->setObjectName(QStringLiteral("listWidget_2"));
-        listWidget_2->setGeometry(QRect(450, 240, 521, 311));
-        layoutWidget2 = new QWidget(searchPage);
-        layoutWidget2->setObjectName(QStringLiteral("layoutWidget2"));
-        layoutWidget2->setGeometry(QRect(120, 240, 271, 311));
-        horizontalLayout_2 = new QHBoxLayout(layoutWidget2);
-        horizontalLayout_2->setSpacing(6);
-        horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
-        verticalLayout_2 = new QVBoxLayout();
-        verticalLayout_2->setSpacing(6);
-        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        checkBox = new QCheckBox(layoutWidget2);
-        checkBox->setObjectName(QStringLiteral("checkBox"));
-        checkBox->setChecked(true);
-
-        verticalLayout_2->addWidget(checkBox);
-
-        checkBox_2 = new QCheckBox(layoutWidget2);
-        checkBox_2->setObjectName(QStringLiteral("checkBox_2"));
-        checkBox_2->setChecked(true);
-
-        verticalLayout_2->addWidget(checkBox_2);
-
-        checkBox_3 = new QCheckBox(layoutWidget2);
-        checkBox_3->setObjectName(QStringLiteral("checkBox_3"));
-        checkBox_3->setChecked(true);
-
-        verticalLayout_2->addWidget(checkBox_3);
-
-        checkBox_4 = new QCheckBox(layoutWidget2);
-        checkBox_4->setObjectName(QStringLiteral("checkBox_4"));
-        checkBox_4->setChecked(true);
-
-        verticalLayout_2->addWidget(checkBox_4);
-
-        checkBox_5 = new QCheckBox(layoutWidget2);
-        checkBox_5->setObjectName(QStringLiteral("checkBox_5"));
-        checkBox_5->setChecked(true);
-
-        verticalLayout_2->addWidget(checkBox_5);
-
-
-        horizontalLayout_2->addLayout(verticalLayout_2);
-
-        verticalLayout_3 = new QVBoxLayout();
-        verticalLayout_3->setSpacing(6);
-        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
-        checkBox_6 = new QCheckBox(layoutWidget2);
-        checkBox_6->setObjectName(QStringLiteral("checkBox_6"));
-        checkBox_6->setChecked(true);
-
-        verticalLayout_3->addWidget(checkBox_6);
-
-        checkBox_7 = new QCheckBox(layoutWidget2);
-        checkBox_7->setObjectName(QStringLiteral("checkBox_7"));
-        checkBox_7->setChecked(true);
-
-        verticalLayout_3->addWidget(checkBox_7);
-
-        checkBox_8 = new QCheckBox(layoutWidget2);
-        checkBox_8->setObjectName(QStringLiteral("checkBox_8"));
-        checkBox_8->setChecked(true);
-
-        verticalLayout_3->addWidget(checkBox_8);
-
-        checkBox_9 = new QCheckBox(layoutWidget2);
-        checkBox_9->setObjectName(QStringLiteral("checkBox_9"));
-        checkBox_9->setChecked(true);
-
-        verticalLayout_3->addWidget(checkBox_9);
-
-        checkBox_10 = new QCheckBox(layoutWidget2);
-        checkBox_10->setObjectName(QStringLiteral("checkBox_10"));
-        checkBox_10->setChecked(true);
-
-        verticalLayout_3->addWidget(checkBox_10);
-
-
-        horizontalLayout_2->addLayout(verticalLayout_3);
-
+        listWidget_2->setGeometry(QRect(60, 120, 651, 531));
+        QFont font1;
+        font1.setFamily(QStringLiteral("Rockwell"));
+        font1.setPointSize(20);
+        listWidget_2->setFont(font1);
+        addButton = new QPushButton(searchPage);
+        addButton->setObjectName(QStringLiteral("addButton"));
+        addButton->setEnabled(false);
+        addButton->setGeometry(QRect(620, 660, 91, 31));
+        removeButton = new QPushButton(searchPage);
+        removeButton->setObjectName(QStringLiteral("removeButton"));
+        removeButton->setEnabled(false);
+        removeButton->setGeometry(QRect(950, 660, 91, 31));
+        pushButton = new QPushButton(searchPage);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(740, 230, 91, 81));
+        pushButton->setStyleSheet(QStringLiteral("border-image: url(:/LIBPRO/cart.png);"));
+        groupBox_2 = new QGroupBox(searchPage);
+        groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
+        groupBox_2->setGeometry(QRect(750, 120, 291, 111));
+        label_7 = new QLabel(groupBox_2);
+        label_7->setObjectName(QStringLiteral("label_7"));
+        label_7->setGeometry(QRect(40, 30, 47, 13));
+        label_8 = new QLabel(groupBox_2);
+        label_8->setObjectName(QStringLiteral("label_8"));
+        label_8->setGeometry(QRect(40, 50, 47, 13));
+        label_9 = new QLabel(groupBox_2);
+        label_9->setObjectName(QStringLiteral("label_9"));
+        label_9->setGeometry(QRect(120, 80, 47, 13));
+        borrowedNumber = new QLabel(groupBox_2);
+        borrowedNumber->setObjectName(QStringLiteral("borrowedNumber"));
+        borrowedNumber->setGeometry(QRect(110, 30, 21, 16));
+        remainNumber = new QLabel(groupBox_2);
+        remainNumber->setObjectName(QStringLiteral("remainNumber"));
+        remainNumber->setGeometry(QRect(110, 50, 21, 16));
+        totalNumber = new QLabel(groupBox_2);
+        totalNumber->setObjectName(QStringLiteral("totalNumber"));
+        totalNumber->setGeometry(QRect(160, 80, 21, 16));
+        listWidget_3 = new QListWidget(searchPage);
+        listWidget_3->setObjectName(QStringLiteral("listWidget_3"));
+        listWidget_3->setGeometry(QRect(750, 300, 291, 351));
+        QFont font2;
+        font2.setFamily(QStringLiteral("Rockwell"));
+        font2.setPointSize(16);
+        listWidget_3->setFont(font2);
         stackedWidget->addWidget(searchPage);
         informationPage = new QWidget();
         informationPage->setObjectName(QStringLiteral("informationPage"));
@@ -310,10 +280,10 @@ public:
         saveButton->setObjectName(QStringLiteral("saveButton"));
         saveButton->setEnabled(false);
         saveButton->setGeometry(QRect(260, 400, 81, 31));
-        layoutWidget3 = new QWidget(groupBox);
-        layoutWidget3->setObjectName(QStringLiteral("layoutWidget3"));
-        layoutWidget3->setGeometry(QRect(31, 62, 311, 201));
-        verticalLayout_4 = new QVBoxLayout(layoutWidget3);
+        layoutWidget2 = new QWidget(groupBox);
+        layoutWidget2->setObjectName(QStringLiteral("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(31, 62, 311, 201));
+        verticalLayout_4 = new QVBoxLayout(layoutWidget2);
         verticalLayout_4->setSpacing(6);
         verticalLayout_4->setContentsMargins(11, 11, 11, 11);
         verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
@@ -322,12 +292,12 @@ public:
         horizontalLayout_5->setSpacing(6);
         horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
         horizontalLayout_5->setSizeConstraint(QLayout::SetNoConstraint);
-        label_3 = new QLabel(layoutWidget3);
+        label_3 = new QLabel(layoutWidget2);
         label_3->setObjectName(QStringLiteral("label_3"));
 
         horizontalLayout_5->addWidget(label_3);
 
-        lineUser_info = new QLineEdit(layoutWidget3);
+        lineUser_info = new QLineEdit(layoutWidget2);
         lineUser_info->setObjectName(QStringLiteral("lineUser_info"));
         lineUser_info->setReadOnly(true);
 
@@ -339,12 +309,12 @@ public:
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setSpacing(6);
         horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
-        label_4 = new QLabel(layoutWidget3);
+        label_4 = new QLabel(layoutWidget2);
         label_4->setObjectName(QStringLiteral("label_4"));
 
         horizontalLayout_6->addWidget(label_4);
 
-        linePass_info = new QLineEdit(layoutWidget3);
+        linePass_info = new QLineEdit(layoutWidget2);
         linePass_info->setObjectName(QStringLiteral("linePass_info"));
         linePass_info->setEchoMode(QLineEdit::Password);
         linePass_info->setReadOnly(true);
@@ -358,12 +328,12 @@ public:
         horizontalLayout_7->setSpacing(6);
         horizontalLayout_7->setObjectName(QStringLiteral("horizontalLayout_7"));
         horizontalLayout_7->setSizeConstraint(QLayout::SetNoConstraint);
-        label_5 = new QLabel(layoutWidget3);
+        label_5 = new QLabel(layoutWidget2);
         label_5->setObjectName(QStringLiteral("label_5"));
 
         horizontalLayout_7->addWidget(label_5);
 
-        linePhone_info = new QLineEdit(layoutWidget3);
+        linePhone_info = new QLineEdit(layoutWidget2);
         linePhone_info->setObjectName(QStringLiteral("linePhone_info"));
         linePhone_info->setReadOnly(true);
 
@@ -372,10 +342,10 @@ public:
 
         verticalLayout_4->addLayout(horizontalLayout_7);
 
-        layoutWidget4 = new QWidget(groupBox);
-        layoutWidget4->setObjectName(QStringLiteral("layoutWidget4"));
-        layoutWidget4->setGeometry(QRect(30, 280, 311, 73));
-        horizontalLayout_8 = new QHBoxLayout(layoutWidget4);
+        layoutWidget3 = new QWidget(groupBox);
+        layoutWidget3->setObjectName(QStringLiteral("layoutWidget3"));
+        layoutWidget3->setGeometry(QRect(30, 280, 311, 73));
+        horizontalLayout_8 = new QHBoxLayout(layoutWidget3);
         horizontalLayout_8->setSpacing(6);
         horizontalLayout_8->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
@@ -383,7 +353,7 @@ public:
         verticalLayout_5 = new QVBoxLayout();
         verticalLayout_5->setSpacing(6);
         verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
-        label_6 = new QLabel(layoutWidget4);
+        label_6 = new QLabel(layoutWidget3);
         label_6->setObjectName(QStringLiteral("label_6"));
 
         verticalLayout_5->addWidget(label_6);
@@ -395,7 +365,7 @@ public:
 
         horizontalLayout_8->addLayout(verticalLayout_5);
 
-        note_info = new QTextEdit(layoutWidget4);
+        note_info = new QTextEdit(layoutWidget3);
         note_info->setObjectName(QStringLiteral("note_info"));
         note_info->setMaximumSize(QSize(221, 71));
         note_info->setReadOnly(true);
@@ -406,18 +376,18 @@ public:
         changeButton->setObjectName(QStringLiteral("changeButton"));
         changeButton->setGeometry(QRect(160, 400, 81, 31));
         stackedWidget->addWidget(informationPage);
-        layoutWidget5 = new QWidget(UserMenu);
-        layoutWidget5->setObjectName(QStringLiteral("layoutWidget5"));
-        layoutWidget5->setGeometry(QRect(0, 0, 2, 2));
-        horizontalLayout_3 = new QHBoxLayout(layoutWidget5);
+        layoutWidget4 = new QWidget(UserMenu);
+        layoutWidget4->setObjectName(QStringLiteral("layoutWidget4"));
+        layoutWidget4->setGeometry(QRect(0, 0, 2, 2));
+        horizontalLayout_3 = new QHBoxLayout(layoutWidget4);
         horizontalLayout_3->setSpacing(6);
         horizontalLayout_3->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
-        layoutWidget6 = new QWidget(UserMenu);
-        layoutWidget6->setObjectName(QStringLiteral("layoutWidget6"));
-        layoutWidget6->setGeometry(QRect(0, 0, 2, 2));
-        horizontalLayout_4 = new QHBoxLayout(layoutWidget6);
+        layoutWidget5 = new QWidget(UserMenu);
+        layoutWidget5->setObjectName(QStringLiteral("layoutWidget5"));
+        layoutWidget5->setGeometry(QRect(0, 0, 2, 2));
+        horizontalLayout_4 = new QHBoxLayout(layoutWidget5);
         horizontalLayout_4->setSpacing(6);
         horizontalLayout_4->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
@@ -429,7 +399,7 @@ public:
         retranslateUi(UserMenu);
         QObject::connect(exitButton, SIGNAL(clicked()), UserMenu, SLOT(close()));
 
-        stackedWidget->setCurrentIndex(2);
+        stackedWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(UserMenu);
@@ -448,16 +418,16 @@ public:
         searchLine->setText(QString());
         searchButton->setText(QString());
         returnButton->setText(QApplication::translate("UserMenu", "Back", Q_NULLPTR));
-        checkBox->setText(QApplication::translate("UserMenu", "CheckBox", Q_NULLPTR));
-        checkBox_2->setText(QApplication::translate("UserMenu", "CheckBox", Q_NULLPTR));
-        checkBox_3->setText(QApplication::translate("UserMenu", "CheckBox", Q_NULLPTR));
-        checkBox_4->setText(QApplication::translate("UserMenu", "CheckBox", Q_NULLPTR));
-        checkBox_5->setText(QApplication::translate("UserMenu", "CheckBox", Q_NULLPTR));
-        checkBox_6->setText(QApplication::translate("UserMenu", "CheckBox", Q_NULLPTR));
-        checkBox_7->setText(QApplication::translate("UserMenu", "CheckBox", Q_NULLPTR));
-        checkBox_8->setText(QApplication::translate("UserMenu", "CheckBox", Q_NULLPTR));
-        checkBox_9->setText(QApplication::translate("UserMenu", "CheckBox", Q_NULLPTR));
-        checkBox_10->setText(QApplication::translate("UserMenu", "CheckBox", Q_NULLPTR));
+        addButton->setText(QApplication::translate("UserMenu", "Add", Q_NULLPTR));
+        removeButton->setText(QApplication::translate("UserMenu", "Remove", Q_NULLPTR));
+        pushButton->setText(QString());
+        groupBox_2->setTitle(QString());
+        label_7->setText(QApplication::translate("UserMenu", "Borowed", Q_NULLPTR));
+        label_8->setText(QApplication::translate("UserMenu", "Remain", Q_NULLPTR));
+        label_9->setText(QApplication::translate("UserMenu", "Total", Q_NULLPTR));
+        borrowedNumber->setText(QString());
+        remainNumber->setText(QString());
+        totalNumber->setText(QString());
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("UserMenu", "Book", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);

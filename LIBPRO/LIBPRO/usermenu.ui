@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>UserMenu</class>
  <widget class="QWidget" name="UserMenu">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -38,8 +41,15 @@
    <property name="autoFillBackground">
     <bool>false</bool>
    </property>
+   <property name="styleSheet">
+    <string notr="true">#centralWidget{	
+	image: url(:/LIBPRO/usermenu.jpg);
+	background-image: url(:/LIBPRO/usermenu.jpg);
+	border-image: url(:/LIBPRO/usermenu.jpg);
+}</string>
+   </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="menuPage">
     <widget class="QWidget" name="layoutWidget">
@@ -235,11 +245,17 @@
     <widget class="QLineEdit" name="searchLine">
      <property name="geometry">
       <rect>
-       <x>450</x>
-       <y>180</y>
-       <width>391</width>
-       <height>21</height>
+       <x>60</x>
+       <y>50</y>
+       <width>721</width>
+       <height>41</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Lucida Calligraphy</family>
+       <pointsize>20</pointsize>
+      </font>
      </property>
      <property name="focusPolicy">
       <enum>Qt::StrongFocus</enum>
@@ -254,10 +270,10 @@
     <widget class="QPushButton" name="searchButton">
      <property name="geometry">
       <rect>
-       <x>850</x>
-       <y>170</y>
-       <width>41</width>
-       <height>31</height>
+       <x>800</x>
+       <y>50</y>
+       <width>51</width>
+       <height>41</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -283,132 +299,173 @@
     <widget class="QListWidget" name="listWidget_2">
      <property name="geometry">
       <rect>
-       <x>450</x>
-       <y>240</y>
-       <width>521</width>
-       <height>311</height>
+       <x>60</x>
+       <y>120</y>
+       <width>651</width>
+       <height>531</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Rockwell</family>
+       <pointsize>20</pointsize>
+      </font>
      </property>
     </widget>
-    <widget class="QWidget" name="layoutWidget">
+    <widget class="QPushButton" name="addButton">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
-       <x>120</x>
-       <y>240</y>
-       <width>271</width>
-       <height>311</height>
+       <x>620</x>
+       <y>660</y>
+       <width>91</width>
+       <height>31</height>
       </rect>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout_2">
-        <item>
-         <widget class="QCheckBox" name="checkBox">
-          <property name="text">
-           <string>CheckBox</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="checkBox_2">
-          <property name="text">
-           <string>CheckBox</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="checkBox_3">
-          <property name="text">
-           <string>CheckBox</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="checkBox_4">
-          <property name="text">
-           <string>CheckBox</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="checkBox_5">
-          <property name="text">
-           <string>CheckBox</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout_3">
-        <item>
-         <widget class="QCheckBox" name="checkBox_6">
-          <property name="text">
-           <string>CheckBox</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="checkBox_7">
-          <property name="text">
-           <string>CheckBox</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="checkBox_8">
-          <property name="text">
-           <string>CheckBox</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="checkBox_9">
-          <property name="text">
-           <string>CheckBox</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="checkBox_10">
-          <property name="text">
-           <string>CheckBox</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
+     <property name="text">
+      <string>Add</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="removeButton">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>950</x>
+       <y>660</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Remove</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>740</x>
+       <y>230</y>
+       <width>91</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/LIBPRO/cart.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="geometry">
+      <rect>
+       <x>750</x>
+       <y>120</y>
+       <width>291</width>
+       <height>111</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>30</y>
+        <width>47</width>
+        <height>13</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Borowed</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>50</y>
+        <width>47</width>
+        <height>13</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Remain</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>80</y>
+        <width>47</width>
+        <height>13</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Total</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="borrowedNumber">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>30</y>
+        <width>21</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="remainNumber">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>50</y>
+        <width>21</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="totalNumber">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>80</y>
+        <width>21</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QListWidget" name="listWidget_3">
+     <property name="geometry">
+      <rect>
+       <x>750</x>
+       <y>300</y>
+       <width>291</width>
+       <height>351</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Rockwell</family>
+       <pointsize>16</pointsize>
+      </font>
+     </property>
     </widget>
    </widget>
    <widget class="QWidget" name="informationPage">

@@ -25,12 +25,10 @@ PreparedStatement* pstmt; \
 ResultSet* res; \
 driver = get_driver_instance(); \
 con = driver->connect(DBHOST, USER, PASSWORD); 
-//con->setSchema(DBACC); \
-//pstmt = con->prepareStatement(""); \
-//stmt = con->createStatement(); \
-//res = stmt->executeQuery("");
 #define DISCONNECTDB con->close(); \
 delete con;
+
+
 
 using namespace std;
 using namespace sql;
@@ -43,8 +41,17 @@ bool compareString(QString, QString);
 // Fucntion in register
 bool checkValidPhone(QString);
 bool phoneCorrect(QString, QString);
+void changePhone(QString, QString);
 void registToDB(QString, QString, QString);
 
 bool resetPassword(QString, QString, QString);
+void resetPassword(QString, QString);
 
 bool checkLogin(QString, QString);
+
+QString getInfo(QString);
+
+void writeDB(QString, QString, QString);
+QString getUser_now();
+QString getPass_now();
+QString getPhone_now();

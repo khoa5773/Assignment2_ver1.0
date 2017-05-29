@@ -73,6 +73,17 @@ bool phoneCorrect(QString user, QString phone) {
 		return check;
 }
 
+void changePhone(QString user, QString phone) {
+	CONNECTDB
+		con->setSchema(DBACC);
+	pstmt = con->prepareStatement("update user_admin.account set phone = (?) where binary user_name = (?)");
+	pstmt->setString(1, phone.toLocal8Bit().constData());
+	pstmt->setString(2, user.toLocal8Bit().constData());
+	pstmt->execute();
+	delete pstmt;
+	DISCONNECTDB
+}
+
 void registToDB(QString user, QString pass, QString phone) {
 	CONNECTDB
 		con->setSchema(DBACC);
@@ -101,6 +112,17 @@ bool resetPassword(QString user,QString phone, QString pass) {
 	return 0;
 }
 
+void resetPassword(QString user, QString pass) {
+	CONNECTDB
+		con->setSchema(DBACC);
+	pstmt = con->prepareStatement("call user_admin.updatePassword(?,?)");
+	pstmt->setString(1, user.toLocal8Bit().constData());
+	pstmt->setString(2, pass.toLocal8Bit().constData());
+	pstmt->execute();
+	delete pstmt;
+	DISCONNECTDB
+}
+
 bool checkLogin(QString user, QString pass) {
 	bool check = 0;
 	CONNECTDB
@@ -117,4 +139,69 @@ bool checkLogin(QString user, QString pass) {
 	delete res;
 	DISCONNECTDB
 		return check;
+}
+
+QString getInfo(QString user) {
+	CONNECTDB
+		con->setSchema(DBACC);
+	pstmt = con->prepareStatement("select phone from account where binary user_name = (?)");
+	pstmt->setString(1, user.toLocal8Bit().constData());
+	res = pstmt->executeQuery();
+	res->next();
+	QString value = res->getString("phone").c_str();
+	delete pstmt;
+	delete res;
+	DISCONNECTDB
+		return value;
+}
+
+void writeDB(QString user_now, QString pass_now, QString phone_now) {
+	CONNECTDB
+		con->setSchema(DBACC);
+	pstmt = con->prepareStatement("call user_admin.writeDB(?,?,?)");
+	pstmt->setString(1, user_now.toLocal8Bit().constData());
+	pstmt->setString(2, pass_now.toLocal8Bit().constData());
+	pstmt->setString(3, phone_now.toLocal8Bit().constData());
+	pstmt->execute();
+	delete pstmt;
+	DISCONNECTDB
+}
+
+QString getUser_now() {
+	CONNECTDB
+		con->setSchema(DBACC);
+	stmt = con->createStatement();
+	res = stmt->executeQuery("select * from accnow");
+	res->next();
+	QString value = res->getString("accnow").c_str();
+	delete stmt;
+	delete res;
+	DISCONNECTDB
+		return value;
+}
+
+QString getPass_now() {
+	CONNECTDB
+		con->setSchema(DBACC);
+	stmt = con->createStatement();
+	res = stmt->executeQuery("select * from accnow");
+	res->next();
+	QString value = res->getString("passnow").c_str();
+	delete stmt;
+	delete res;
+	DISCONNECTDB
+		return value;
+}
+
+QString getPhone_now() {
+	CONNECTDB
+		con->setSchema(DBACC);
+	stmt = con->createStatement();
+	res = stmt->executeQuery("select * from accnow");
+	res->next();
+	QString value = res->getString("phonenow").c_str();
+	delete stmt;
+	delete res;
+	DISCONNECTDB
+		return value;
 }

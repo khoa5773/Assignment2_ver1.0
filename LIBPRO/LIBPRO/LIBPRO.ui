@@ -67,9 +67,25 @@
            <item>
             <widget class="QLabel" name="label">
              <property name="text">
-              <string>User        </string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#ececec;&quot;&gt;User             &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
             </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_5">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Fixed</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>30</width>
+               <height>17</height>
+              </size>
+             </property>
+            </spacer>
            </item>
            <item>
             <widget class="QLineEdit" name="lineEdit_user"/>
@@ -81,7 +97,7 @@
            <item>
             <widget class="QLabel" name="label_2">
              <property name="text">
-              <string>Password</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#dfdfdf;&quot;&gt;Password&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
             </widget>
            </item>
@@ -192,8 +208,9 @@
    </widget>
    <zorder>frame</zorder>
    <zorder>label_3</zorder>
-   <zorder>pushButtonLogin</zorder>
-   <zorder>pushButtonLogin</zorder>
+   <zorder>pushButtonRegister</zorder>
+   <zorder>pushButtonForgotPass</zorder>
+   <zorder>horizontalSpacer</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
