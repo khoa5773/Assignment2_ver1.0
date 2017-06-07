@@ -84,6 +84,17 @@ void changePhone(QString user, QString phone) {
 	DISCONNECTDB
 }
 
+void changeNickname(QString user, QString name) {
+	CONNECTDB
+		con->setSchema(DBACC);
+	pstmt = con->prepareStatement("update user_admin.account set nickname = (?) where binary user_name = (?)");
+	pstmt->setString(1, name.toLocal8Bit().constData());
+	pstmt->setString(2, user.toLocal8Bit().constData());
+	pstmt->execute();
+	delete pstmt;
+	DISCONNECTDB
+}
+
 void registToDB(QString user, QString pass, QString phone) {
 	CONNECTDB
 		con->setSchema(DBACC);
@@ -139,6 +150,25 @@ bool checkLogin(QString user, QString pass) {
 	delete res;
 	DISCONNECTDB
 		return check;
+}
+
+QString getRole(QString user) {
+	QString result = "G";
+	// YOUR CODE GO HERE
+	CONNECTDB
+		con->setSchema(DBACC);
+	stmt = con->createStatement();
+	res = stmt->executeQuery("select * from account");
+	while (res->next()) {
+		SQLString checkUsername = res->getString("user_name");
+		if (compareString(user, checkUsername.c_str()))
+			result = res->getString("user_id").c_str();
+	}
+	delete stmt;
+	delete res;
+	DISCONNECTDB
+	///////////////////
+	return result;
 }
 
 QString getInfo(QString user) {
@@ -204,4 +234,172 @@ QString getPhone_now() {
 	delete res;
 	DISCONNECTDB
 		return value;
+}
+
+QString getLast_Login(QString user) {
+	QString value;
+	CONNECTDB
+		con->setSchema(DBACC);
+	pstmt = con->prepareStatement("select * from account where binary user_name = (?)");
+	pstmt->setString(1, user.toLocal8Bit().constData());
+	res = pstmt->executeQuery();
+	res->next();
+	value = res->getString("last_login").c_str();
+	delete res;
+	delete pstmt;
+	DISCONNECTDB
+		return value;
+}
+
+void updateLogin(QString user) {
+	CONNECTDB
+		con->setSchema(DBACC);
+	pstmt = con->prepareStatement("call updateTimeLogin(?)");
+	pstmt->setString(1, user.toLocal8Bit().constData());
+	pstmt->execute();
+	delete pstmt;
+	DISCONNECTDB
+}
+
+void showAllBook(QListWidget* a) {
+	a->clear();
+	CONNECTDB
+		con->setSchema(DBBOOK);
+	pstmt = con->prepareStatement("call book_admin.searchBook(?)");
+	pstmt->setString(1, "%");
+	res = pstmt->executeQuery();
+	while (res->next()) {
+		QString findedBook = res->getString("book_name").c_str();
+		QString id = res->getString("id").c_str();
+		QString author = res->getString("author_name").c_str();
+		QString rating = res->getString("rating").c_str();
+		QString type = res->getString("type").c_str();
+		QString releaseDate = res->getString("release_date").c_str();
+		QIcon icon;
+		icon.addFile(":/LIBPRO/img/" + id + ".jpg", QSize(), QIcon::Normal, QIcon::Off);
+		QListWidgetItem* item = new QListWidgetItem();
+		item->setText(findedBook);
+		item->setToolTip("Author's name: " + author + "\nType: " + type + "\nRelease date: " + releaseDate);
+		item->setIcon(icon);
+		a->addItem(item);
+	}
+	delete pstmt;
+	delete res;
+	DISCONNECTDB
+}
+
+void searchBook(QString keyw, QListWidget* a) {
+	CONNECTDB
+		con->setSchema(DBBOOK);
+	pstmt = con->prepareStatement("call book_admin.searchBook(?)");
+	pstmt->setString(1, keyw.toLocal8Bit().constData());
+	res = pstmt->executeQuery();
+	while (res->next()) {
+		QString findedBook = res->getString("book_name").c_str();
+		QString id = res->getString("id").c_str();
+		QString author = res->getString("author_name").c_str();
+		QString rating = res->getString("rating").c_str();
+		QString type = res->getString("type").c_str();
+		QString releaseDate = res->getString("release_date").c_str();
+		QIcon icon;
+		icon.addFile(":/LIBPRO/img/" + id + ".jpg", QSize(), QIcon::Normal, QIcon::Off);
+		QListWidgetItem* item = new QListWidgetItem();
+		item->setText(findedBook);
+		item->setToolTip("Author's name: " + author + "\nType: " + type + "\nRelease date: " + releaseDate);
+		item->setIcon(icon);
+		a->addItem(item);
+	}
+	delete pstmt;
+	delete res;
+	DISCONNECTDB
+}
+
+void getBook(QListWidgetItem* a) {
+	QString book_name;
+	QString author;
+	double rating;
+	QString link;
+	CONNECTDB
+		con->setSchema(DBBOOK);
+	pstmt = con->prepareStatement("select * from book_admin.book where binary book_name = (?)");
+	pstmt->setString(1, a->text().toLocal8Bit().constData());
+	res = pstmt->executeQuery();
+	while (res->next()) {
+		book_name = res->getString("book_name").c_str();
+		author = res->getString("author_name").c_str();
+		rating = res->getDouble("rating");
+		link = res->getString("link").c_str();
+	}
+	delete pstmt;
+	pstmt = con->prepareStatement("call book_admin.getBook(?,?,?,?,?)");
+	pstmt->setString(1, book_name.toLocal8Bit().constData());
+	pstmt->setString(2, author.toLocal8Bit().constData());
+	pstmt->setDouble(3, rating);
+	pstmt->setString(4, link.toLocal8Bit().constData());
+	pstmt->setString(5, getUser_now().toLocal8Bit().constData());
+	pstmt->execute();
+	delete pstmt;
+	delete res;
+	DISCONNECTDB
+}
+
+void setTableBook(QTableWidget* a) {
+	a->clearContents();
+	QString book_name;
+	QString author;
+	double rating;
+	QString link;
+	QString date;
+	int row = 0;
+	QString day;
+	QString time;
+	CONNECTDB
+		con->setSchema(DBBOOK);
+	pstmt = con->prepareStatement("call setupTable(?)");
+	pstmt->setString(1, getUser_now().toLocal8Bit().constData());
+	res = pstmt->executeQuery();
+	while (res->next()) {
+		book_name = res->getString("book_name").c_str();
+		author = res->getString("author").c_str();
+		rating = res->getDouble("rating")/2;
+		link = res->getString("link").c_str();
+		date = res->getString("date_borrow").c_str();
+		day = res->getString("floor(hour(timediff(date_add(date_borrow,interval 2 week) - 1,now())) / 24)").c_str();
+		time = res->getString("timediff((timediff(date_add(date_borrow,interval 2 week),now())),sec_to_time(floor(hour(timediff(date_add(date_borrow,interval 2 week) - 1,now())) / 24)*24*60*60))").c_str();
+		QTableWidgetItem* item1 = new QTableWidgetItem(book_name);
+		QTableWidgetItem* item2 = new QTableWidgetItem(author);
+		QTableWidgetItem* item3 = new QTableWidgetItem(rating);
+		QTableWidgetItem* item4 = new QTableWidgetItem(link);
+		item3->setData(0, QVariant::fromValue(StarRating(rating)));
+		QTableWidgetItem* item5 = new QTableWidgetItem(date);
+		QTableWidgetItem* item6 = new QTableWidgetItem(day + "-" + time);
+		a->setItem(row, 0, item1);
+		a->setItem(row, 1, item2);
+		a->setItem(row, 2, item3);
+		a->setItem(row, 3, item4);
+		a->setItem(row, 4, item5);
+		a->setItem(row, 5, item6);
+		row++;
+	}
+	delete pstmt;
+	delete res;
+	DISCONNECTDB
+}
+
+bool checkBookExist(QString a, QString b) {
+	bool value = 0;
+	CONNECTDB
+		con->setSchema(DBBOOK);
+	pstmt = con->prepareStatement("select book_name from borrowbook where binary owner = (?)");
+	pstmt->setString(1, b.toLocal8Bit().constData());
+	res = pstmt->executeQuery();
+	while (res->next()) {
+		if (compareString(res->getString("book_name").c_str(), a)) {
+			value = 1;
+			break;
+		}
+	}
+	delete pstmt;
+	delete res;
+	return value;
 }

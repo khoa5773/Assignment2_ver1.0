@@ -5,6 +5,7 @@
 #include "registerform.h"
 #include "forgotpass.h"
 #include "usermenu.h"
+#include "adminmenu.h"
 
 
 class LIBPRO : public QMainWindow
@@ -14,11 +15,12 @@ class LIBPRO : public QMainWindow
 public:
 	LIBPRO(QWidget *parent = Q_NULLPTR);
 
-public slots:
-void openBox();
-void signUp();
-void forgotPass();
-void reOpen();
+	public slots:
+	void openBox();
+	void signUp();
+	void forgotPass();
+	void reOpen();
+
 	
 signals:
 
@@ -27,4 +29,6 @@ private:
 	RegisterForm *regist;
 	ForgotPass *dialog;
 	UserMenu *usermenu;
+	adminmenu *ad;
+
 };
