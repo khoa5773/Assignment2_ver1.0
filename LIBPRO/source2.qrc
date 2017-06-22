@@ -1,0 +1,34 @@
+<RCC>
+    <qresource prefix="/LIBPRO">
+        <file>img/71.jpg</file>
+        <file>img/72.jpg</file>
+        <file>img/73.jpg</file>
+        <file>img/74.jpg</file>
+        <file>img/75.jpg</file>
+        <file>img/76.jpg</file>
+        <file>img/77.jpg</file>
+        <file>img/78.jpg</file>
+        <file>img/79.jpg</file>
+        <file>img/80.jpg</file>
+        <file>img/81.jpg</file>
+        <file>img/82.jpg</file>
+        <file>img/83.jpg</file>
+        <file>img/84.jpg</file>
+        <file>img/85.jpg</file>
+        <file>img/86.jpg</file>
+        <file>img/87.jpg</file>
+        <file>img/88.jpg</file>
+        <file>img/89.jpg</file>
+        <file>img/90.jpg</file>
+        <file>img/91.jpg</file>
+        <file>img/92.jpg</file>
+        <file>img/93.jpg</file>
+        <file>img/94.jpg</file>
+        <file>img/95.jpg</file>
+        <file>img/96.jpg</file>
+        <file>img/97.jpg</file>
+        <file>img/98.jpg</file>
+        <file>img/99.jpg</file>
+        <file>img/100.jpg</file>
+    </qresource>
+</RCC>

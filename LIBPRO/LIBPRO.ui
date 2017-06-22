@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>LIBPROClass</class>
+ <widget class="QMainWindow" name="LIBPROClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>907</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>LIBPRO</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="LIBPRO.qrc">
+    <normaloff>:/LIBPRO/icon.png</normaloff>:/LIBPRO/icon.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#centralWidget{	
+border-image: url(:/LIBPRO/IMG_0299.jpg);
+}
+
+
+#pushButtonForgotPass:hover {
+    text-color: red;
+    color: red;
+}
+
+#pushButtonRegister:hover {
+    text-color: red;
+    color: red;
+}
+
+   </string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1280</width>
+      <height>907</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#loginPage{
+border-image: url(:/LIBPRO/19249875_1852279541766421_1585598154_o.jpg);
+}
+
+#chooseRole{
+border-image: url(:/LIBPRO/pattern-5_blur.png);
+}
+
+QPushButton {
+	border: none;
+	border-radius: 30px;
+	
+	background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgba(168, 237, 205, 255), stop:0.492611 rgba(255, 255, 255, 255));
+	/*background-color: rgba(255,255,255,0.5);*/
+}
+
+QPushButton:hover {
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 rgb(212, 236, 215));
+}
+
+QPushButton:pressed {
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #fff, stop: 1 #ddd);
+}
+
+#pushButtonLogin::hover{
+background:rgba(82, 191, 162,0.8);
+}</string>
+    </property>
+    <property name="currentIndex">
+     <number>1</number>
+    </property>
+    <widget class="QWidget" name="loginPage">
+     <widget class="QPushButton" name="pushButtonRegister">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>660</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Gadugi</family>
+        <pointsize>9</pointsize>
+        <underline>true</underline>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border:0px;
+text-align: left;
+background:none;</string>
+      </property>
+      <property name="text">
+       <string>You don't have an account?</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_user">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>380</y>
+        <width>321</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Cambria</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#lineEdit_user{
+border-radius: 10px;
+    padding: 70px;
+    width: 200px;
+    height: 150px;
+background: rgba(255, 255, 255,0.8)
+}
+#lineEdit_user::placeholder {
+  border: #000;
+  padding: 10px;
+  font-size: 1.2em;
+  width: 100%;
+}</string>
+      </property>
+      <property name="placeholderText">
+       <string>Username</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_pass">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>460</y>
+        <width>321</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>Cambria</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#lineEdit_pass{
+border-radius: 10px;
+    padding: 70px;
+    width: 200px;
+    height: 150px;
+background: rgba(255, 255, 255,0.8)
+}
+#lineEdit_pass::placeholder {
+  border: #000;
+  padding: 10px;
+  font-size: 1.2em;
+  width: 100%;
+opacity: 0.5;
+}</string>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::Password</enum>
+      </property>
+      <property name="placeholderText">
+       <string>Password</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonLogin">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>550</y>
+        <width>161</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+        <horstretch>128</horstretch>
+        <verstretch>90</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>-1</pointsize>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:rgba(82, 191, 162,0.3);
+    border: none;
+    color:black;
+    padding: 25px 32px;
+    text-align: center;
+    font-size: 20px;
+border-radius: 35px;</string>
+      </property>
+      <property name="text">
+       <string>SIGN IN</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>390</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/LIBPRO/user.png);
+
+opacity: 0.0;
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>840</y>
+        <width>191</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Gadugi</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="whatsThis">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;Designed by &lt;/span&gt;&lt;a href=&quot;https://www.qt.io/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Qt&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">Designed by Qt</string>
+      </property>
+      <property name="text">
+       <string>Copyright TM</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::PlainText</enum>
+      </property>
+      <property name="openExternalLinks">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonForgotPass">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>680</y>
+        <width>191</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Gadugi</family>
+        <pointsize>9</pointsize>
+        <underline>true</underline>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border:0px;
+text-align: left;
+background:transparent;</string>
+      </property>
+      <property name="text">
+       <string>You have forgotten your password?</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>470</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/LIBPRO/images.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>990</x>
+        <y>700</y>
+        <width>251</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/LIBPRO/appstore-icon-mobile-retina.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="chooseRole">
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>530</x>
+        <y>590</y>
+        <width>261</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Futura</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: #1b3c8e</string>
+      </property>
+      <property name="text">
+       <string>Libarian</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>920</x>
+        <y>570</y>
+        <width>261</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Futura</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: #1b3c8e</string>
+      </property>
+      <property name="text">
+       <string>User</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="userButton">
+      <property name="geometry">
+       <rect>
+        <x>900</x>
+        <y>250</y>
+        <width>300</width>
+        <height>300</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="LIBPRO.qrc">
+        <normaloff>:/LIBPRO/G.png</normaloff>:/LIBPRO/G.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>250</width>
+        <height>250</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="adminButton">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>250</y>
+        <width>300</width>
+        <height>300</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="LIBPRO.qrc">
+        <normaloff>:/LIBPRO/A.png</normaloff>:/LIBPRO/A.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>250</width>
+        <height>250</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="libButton">
+      <property name="geometry">
+       <rect>
+        <x>510</x>
+        <y>250</y>
+        <width>300</width>
+        <height>300</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="LIBPRO.qrc">
+        <normaloff>:/LIBPRO/L.png</normaloff>:/LIBPRO/L.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>250</width>
+        <height>250</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>580</y>
+        <width>271</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Futura</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: #1b3c8e</string>
+      </property>
+      <property name="text">
+       <string>Administrator</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="LIBPRO.qrc"/>
+ </resources>
+ <connections/>
+</ui>
